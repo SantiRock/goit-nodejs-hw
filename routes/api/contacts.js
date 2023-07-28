@@ -26,7 +26,6 @@ router.post('/', validateBody(validationContact), async (req, res, next) => {
       message: "missing required field"
     })
   }
-  validateBody(validationContact);
   return res.status(201).json(newContact);
 })
 
