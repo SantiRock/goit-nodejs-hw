@@ -56,6 +56,10 @@ const contact = new Schema({
     default: false,
     require: [true]
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+  }
   },
   {versionKey: false}
 )

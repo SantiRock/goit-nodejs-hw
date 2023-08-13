@@ -3,6 +3,7 @@ const service = require("../service/index");
 const get = async (_, res, next) => {
     try {
       const contacts = await service.getAllContacts();
+ 
       res.json({
         status: "success",
         code: 200,
