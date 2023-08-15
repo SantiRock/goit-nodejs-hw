@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ctrlUser = require("../../controllers/users"); // signupCtrl loginCtrl currentCtrl
+const ctrlUser = require("../../controllers/users/users"); // signupCtrl loginCtrl currentCtrl
 const auth = require("../../middlewares/auth");
 
 const invalidatedTokens = new Set();

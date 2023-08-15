@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 //const passport = require("passport");
-const User = require("../service/schemas/users");
-const { getUserByEmail } = require("../service/index");
+const User = require("../../service/schemas/users");
+const { getUserByEmail } = require("../../service/index");
 require("dotenv").config();
 const secret = process.env.SECRET
 
@@ -66,7 +66,7 @@ const loginCtrl = async (req, res, next) => {
     });
 };
 
-const currentCtrl = async (req, res, next) => {
+const currentCtrl = async (req, res) => {
     const { username, email, subscription } = req.user;
     res.json({
         status: "success",

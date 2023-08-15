@@ -1,4 +1,4 @@
-const service = require("../service/index");
+const service = require("../../service/index");
 
 const get = async (_, res, next) => {
     try {
@@ -41,9 +41,11 @@ const get = async (_, res, next) => {
   };
   
   const create = async (req, res, next) => {
-    const { name, email, phone, favorite } = req.body;
+    const { name, email, phone, favorite} = req.body;
+    const { _id } = req.user;
+    
     try {
-      const newContact = await service.createContact({ name, email, phone, favorite });
+      const newContact = await service.createContact({ name, email, phone, favorite, owner: _id });
       if (!newContact) {
         return res.status(400).json({
           status: "failed",

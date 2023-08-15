@@ -4,6 +4,7 @@ const router = express.Router()
 const { validateBody } = require("../../middlewares/validateBody")
 const { validationContact } = require("../../schemas/contacts");
 
+
 router.get('/', async (req, res, next) => {
   const contacts = await listContacts();
   res.status(200).json(contacts);
