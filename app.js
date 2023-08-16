@@ -2,8 +2,9 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 require("dotenv").config();
-const contactsRouter = require('./routes/index');
-const usersRouter = require('./routes/api/users');
+
+const contactsRouter = require('./routes/contacts');
+const usersRouter = require('./routes/users');
 
 const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
@@ -15,8 +16,6 @@ require("./config/config-passport");
 
 app.use('/api/contacts', contactsRouter);
 app.use('/api/users', usersRouter);
-
-
 
 app.use((_, res) => {
   res.status(404).json({
