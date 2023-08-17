@@ -1,4 +1,4 @@
-const {Contact} = require("./schemas/contact");
+const {Contact, User} = require("../models");
 
 const getAllContacts = async () => {
     return await Contact.find();
@@ -8,9 +8,9 @@ const getContactById = async (id) => {
     return await Contact.findOne({ _id: id });
 };
 
-const createContact = async ({name, email, phone, favorite}) => {
+const createContact = async ({name, email, phone, favorite, owner}) => {
     if (!name || !email || !phone) return null;
-    return await Contact.create({ name, email, phone, favorite });
+    return await Contact.create({ name, email, phone, favorite, owner });
 };
 
 const updateContact = async (id, fields) => {
@@ -27,12 +27,17 @@ const patchFavorite = async (id, {favorite}) => {
     return await Contact.findByIdAndUpdate({_id: id}, {favorite}, {new: true});
 }
 
+const getUserByEmail = async (email) => {
+    return await User.findOne({email});
+};
+
 module.exports = {
     getAllContacts,
     getContactById,
     createContact,
     updateContact,
     removeContact,
-    patchFavorite
+    patchFavorite,
+    getUserByEmail
 }
 

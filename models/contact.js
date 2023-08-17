@@ -54,8 +54,13 @@ const contact = new Schema({
   favorite: {
     type: Boolean,
     default: false,
-    require: [true]
+    require: true
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+    require: true
+  }
   },
   {versionKey: false}
 )
